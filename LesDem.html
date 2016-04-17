@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Digital Museum?</title>
+
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="style.css" rel="stylesheet"/>
+</head>
+<body>
+
+<div class="container" id="container2">
+
+  <div class="header">    
+
+
+    <div class='headerBarImages'>
+
+
+
+         <a href="./StarryNight.html"><div class='headerImageDiv'><img class=' headerImage'src='paintings/starryNight.jpg'></img> </div></a>
+         <a href="./LesDem.html"><div class='headerImageDiv'><img class=' headerImage'src='paintings/picasso.jpg'></img></div></a>
+         <a href="./ThreeWom.html"><div class='headerImageDiv'><img class=' headerImage'src='paintings/ThreeWomen.jpg'></img></div></a>
+         <a href="./hope.html"><div class='headerImageDiv'><img class=' headerImage'src='paintings/klimt.jpg'></img></div></a>
+         <a href="./PersMem.html"><div class='headerImageDiv' ><img class=' headerImage'src='paintings/dali.jpg'></img> </div></a>
+        <div class="buttonHomeDiv"><a class='buttonHome' href="./index.html">Can we really see</br>a work of art online?</a> </div> 
+    </div>
+
+
+</div>
+
+
+  <div class="leftSide">
+
+
+
+
+    <div class="canvas" id="plot">
+            <div class="mainTitle">
+        <h2>Les Demoiselles d'Avignon</h2>
+        <p>Pablo Picasso</p>
+      </div>   
+      <div class='buttons'>
+            <button class='button' id="hue" onclick="pictureHue()">
+          <div >HUE</div></button>  
+            <button class='button'  id="bright"onclick="pictureBright()">
+          <div>BRIGHTNESS</div></button>  
+            <button class='button' id="sat"onclick="pictureSat()">
+          <div  >SATURATION</div></button>  
+      </div>
+
+
+
+          <div class="canvas2 imageSection" id="threeImages">
+
+                <div class="imageThree imageWrap"><p class=labels>High</p><div class='p1'><img id="high" class='targetImage image'src='paintings/LesDem/images/2Q== (2).jpg'data-colorcount=""></img></div>
+                <div class="colors">
+                <div class="function dominantColor">
+                <p class="labels">Dominant Color</p>
+                <div class="swatches"></div>
+                </div>
+                <div class="function medianCutPalette clearfix">
+                <p class="labels">Palette</p>
+                <div class="swatches"></div>
+                </div>
+                </div></div>
+
+                <div class="imageThree imageWrap" ><p class=labels>Medium</p><div class='p1'><img id="med" class='targetImage image'src='paintings/LesDem/images/images (14).jpg'data-colorcount=""></img></div>
+                <div class="colors">
+                <div class="function dominantColor2">
+                <p class="labels">Dominant Color</p>
+                <div class="swatches2"></div>
+                </div>
+                <div class="function medianCutPalette2 clearfix">
+                <p class="labels">Palette</p>
+                <div class="swatches2"></div>
+                </div>
+                </div></div>
+
+                <div class="imageThree imageWrap" ><p class=labels>Low</p><div class='p1'><img id="low" class='targetImage image'src='paintings/LesDem/images/Z (4).jpg'data-colorcount=""></img></div>
+                <div class="colors">
+                <div class="function dominantColor3">
+                <p class="labels">Dominant Color</p>
+                <div class="swatches3"></div>
+                </div>
+                <div class="function medianCutPalette3 clearfix">
+                <p class="labels">Palette</p>
+                <div class="swatches3"></div>
+                </div>
+                </div></div>
+
+
+
+
+          </div>
+
+
+ 
+ 
+
+</div><!-- END CANVAS-->
+
+<div class='summary'><h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vulputate risus lacus, convallis interdum leo tempus eu. Donec placerat, magna non suscipit lacinia, ex nulla.</h3></div>
+
+
+
+
+    </div><!-- END LEFTSIDE-->
+
+
+<div class ="cluster" id="cluster"></div>
+
+   
+
+
+  </div><!-- END CONTAINER-->
+
+</body>
+	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="colorThief/jquery.js"></script>
+    <script src="queue/queue.min.js"></script>
+    <script src="./imageCluster.js"></script>
+    <script src="colorThief/color-thief.js"></script>
+    <script src="./LesDem.js"></script>
+
+
+
+
+
+</html>
