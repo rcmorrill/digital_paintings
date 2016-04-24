@@ -344,6 +344,11 @@ header{
 	float:left;
 }
 
+.summaryFinal{
+	max-width:387px;
+	position:relative;
+	float:left;
+}
 
 .function{
 	position:relative;
@@ -354,9 +359,27 @@ header{
 
 #fourMore{
 	border-top:solid gray 1px;
+	margin-bottom:2%;
 }
 
+#soWhat{
 
+	border-top:solid gray 1px;
+
+}
+.finalText{
+	width:33%;
+}
+
+.finalImage{
+	margin-bottom:20%;
+	width:80%;
+	margin-top:2%;
+}
+
+.finalImage:hover{
+	opacity:.8;
+}
 .labels{
 
 	font-family:'helvetica', sans-serif;
@@ -680,22 +703,22 @@ body { font-family: sans-serif; }
 
 .footerImageDiv{
 	position:relative;
-	float:right;
-	width:43%;
+	float:left;
+	width:45%;
 	margin-right:25px;
 	margin-top:20px;
 	margin-bottom:56px;
-	height:300px;
+	height:350px;
 }
 .footerImage{
 
-	height:250px;
+	height:300px;
 
 }
 
 .footerImage2{
 
-	width:250px;
+	width:300px;
 
 }
 
