@@ -39,22 +39,32 @@ var nodesEnter= nodes.enter()
     //.attr('opacity',.4)
         .on( 'mouseenter', function() {
             // select element in current context
+             plot.append("image")
+            .attr('d',d3.select(this).attr('d'))
+            .attr("xlink:href", d3.select(this).attr("xlink:href"))
+               .attr("height", 200)
+               .attr("width", 200)
+               // .attr('x',left +'px')
+               // .attr('y',top +'px')
+               .attr('x',width*.2)
+               .attr('y',height*.8)
+               .attr("class","bigPic")
+
+
             d3.select( this )
               .transition()
-              .attr("height", function(d){ console.log(d.label); return 200})
-              .attr("width", 200)
-              .style('zindex','10000')
-
-
+              .attr("height", function(d){  return 70})
+              .attr("width", 60)
 
           })
           // set back
           .on( 'mouseleave', function() {
             d3.select( this )
-              .transition()
               .attr("height", 40)
               .attr("width", 40);
-          });
+              d3.select('.bigPic').remove();
+          })
+
 
 
 nodes.exit().remove();
@@ -180,6 +190,9 @@ document.getElementById("med").src="paintings/ThreeWomen/images/9k=.jpg";
 document.getElementById("low").src="paintings/ThreeWomen/images/Z (3).jpg";
 
 
+highAnchor.text('hue');
+lowAnchor.text('hue');
+
 // d3.selectAll('.swatch')
 // .classed('noDisplay',true)
  $('div.swatch').remove();
@@ -196,6 +209,10 @@ function pictureBright(){
 document.getElementById("high").src="paintings/ThreeWomen/images/images (6).jpg";
 document.getElementById("med").src="paintings/ThreeWomen/images/images.jpg";
 document.getElementById("low").src="paintings/ThreeWomen/images/2Q== (5).jpg";
+
+
+highAnchor.text('brightness');
+lowAnchor.text('brightness');
 
 // d3.selectAll('.swatch')
 // .classed('noDisplay',true)
@@ -214,6 +231,9 @@ function pictureSat(){
 document.getElementById("high").src="paintings/ThreeWomen/images/9k= (4).jpg";
 document.getElementById("med").src="paintings/ThreeWomen/images/2Q== (4).jpg";
 document.getElementById("low").src="paintings/ThreeWomen/images/2Q== (5).jpg";
+
+highAnchor.text('saturation');
+lowAnchor.text('saturation');
 
 // d3.selectAll('.swatch')
 // .classed('noDisplay',true)

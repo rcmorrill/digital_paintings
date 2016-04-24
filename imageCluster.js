@@ -8,14 +8,13 @@ var width = document.getElementById('cluster').clientWidth-margin.l-margin.r,
 var plot = d3.select('.cluster')
   .append('svg')
   .attr('width',width+margin.l+margin.r)
-  .attr('height',height+margin.t+margin.b)
+  .attr('height',height+margin.t+margin.b+200)
   .append('g')
   .attr('class','plot')
   .attr('transform', 'translate ('+margin.l+','+margin.r+')');
 
 
 
-  var scaleX = d3.scale.linear().domain([0,10]).range([0,width])
  
 
 var force = d3.layout.force()
@@ -23,10 +22,7 @@ var force = d3.layout.force()
     .charge(0)
     .gravity(0);
 
-var axisX = d3.svg.axis()
-    .orient('bottom')
-    .tickValues([0,2,4,6,8,10])
-    .scale(scaleX);
+
 
 /*----------------labels--------*/
 
