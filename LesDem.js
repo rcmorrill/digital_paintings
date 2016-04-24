@@ -1,7 +1,7 @@
 
 var scaleYhue = d3.scale.linear().domain([85,135]).range([height,0])
-var scaleYsat = d3.scale.linear().domain([40,145]).range([height,0])
-var scaleYbright = d3.scale.linear().domain([145,207]).range([height,0])
+var scaleYsat = d3.scale.linear().domain([30,145]).range([height,0])
+var scaleYbright = d3.scale.linear().domain([130,207]).range([height,0])
 
 document.getElementById('hue').focus();
 
@@ -41,20 +41,33 @@ var nodesEnter= nodes.enter()
     //.attr('opacity',.4)
         .on( 'mouseenter', function() {
             // select element in current context
+            plot.append("image")
+            .attr('d',d3.select(this).attr('d'))
+            .attr("xlink:href", d3.select(this).attr("xlink:href"))
+               .attr("height", 200)
+               .attr("width", 200)
+               // .attr('x',left +'px')
+               // .attr('y',top +'px')
+               .attr('x',width*.2)
+               .attr('y',height*.8)
+               .attr("class","bigPic")
+
+
             d3.select( this )
               .transition()
-              .attr("height", function(d){ console.log(d.label); return 200})
-              .attr("width", 200)
-              .style('z-index','10000')
+              .attr("height", function(d){  return 70})
+              .attr("width", 60)
 
           })
           // set back
           .on( 'mouseleave', function() {
             d3.select( this )
-              .transition()
               .attr("height", 40)
               .attr("width", 40);
-          });
+              d3.select('.bigPic').remove();
+          })
+
+
 
 
 nodes.exit().remove();
