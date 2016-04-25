@@ -40,7 +40,12 @@ var nodesEnter= nodes.enter()
     .attr("height", 50)
     //.attr('opacity',.4)
         .on( 'mouseenter', function() {
-            // select element in current context
+ 
+
+              d3.selectAll('.node')
+               .attr('width',50)
+               .attr("height", 50)
+
             plot.append("image")
             .attr('d',d3.select(this).attr('d'))
             .attr("xlink:href", d3.select(this).attr("xlink:href"))
