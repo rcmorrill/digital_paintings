@@ -43,15 +43,11 @@ var nodesEnter= nodes.enter()
     .attr('width',50)
     .attr("height", 50)
     //.attr('opacity',.4)
-        .on( 'mouseenter', function() {
-            // select element in current context
-            // var xy = d3.mouse(document.getElementById('plot'));
-            // //this finds the xy of the mouse in relation to this element
-            // //console.log(xy);
+        .on( 'mouseover', function() {
 
-            // var left = xy[0]*.05, top = xy[1]-120;
-
-            // console.log(left,top);
+            d3.selectAll('.node')
+               .attr('width',50)
+               .attr("height", 50)
 
 
             plot.append("image")
@@ -68,15 +64,16 @@ var nodesEnter= nodes.enter()
 
             d3.select( this )
               .transition()
-              .attr("height", function(d){  return 70})
+
+              .attr("height",  60)
               .attr("width", 60)
 
           })
           // set back
-          .on( 'mouseleave', function() {
+          .on( 'mouseout', function() {
             d3.select( this )
-              .attr("height", 40)
-              .attr("width", 40);
+              .attr("height", 50)
+              .attr("width", 50);
               d3.select('.bigPic').remove();
           })
 
