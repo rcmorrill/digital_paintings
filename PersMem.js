@@ -1,11 +1,11 @@
 
-var scaleYhue = d3.scale.linear().domain([-44,143]).range([height,0])
-var scaleYsat = d3.scale.linear().domain([12,127]).range([height,0])
-var scaleYbright = d3.scale.linear().domain([40,163]).range([height,0])
+var scaleYhue = d3.scale.linear().domain([-44,143]).range([0,100])
+var scaleYsat = d3.scale.linear().domain([12,127]).range([0,100])
+var scaleYbright = d3.scale.linear().domain([40,163]).range([0,100])
 
 document.getElementById('hue').focus();
 
-
+var scaleY = d3.scale.linear().domain([0,100]).range([height,0])
 
 d3.csv ('paintings/PersistanceMemory/persistance.csv',parse,dataLoaded);
 
@@ -61,15 +61,15 @@ var nodesEnter= nodes.enter()
 
             d3.select( this )
               .transition()
-              .attr("height", function(d){  return 70})
-              .attr("width", 60)
+              .attr("height",  70)
+              .attr("width", 70)
 
           })
           // set back
           .on( 'mouseleave', function() {
             d3.select( this )
-              .attr("height", 40)
-              .attr("width", 40);
+              .attr("height", 50)
+              .attr("width", 50);
               d3.select('.bigPic').remove();
           })
 
@@ -121,12 +121,12 @@ function brightForce(e){
         .each(function(d){
         var focus = {};
            focus.x = width*.4;
-           focus.y = d.bright;
+           focus.y = scaleYbright(d.bright);
 
             d.x += (focus.x-d.x)*(e.alpha*.1);
             d.y += (focus.y-d.y)*(e.alpha*.1);
         })
-       .attr('y',function(d){return scaleYbright(d.y)})
+       .attr('y',function(d){return scaleY(d.y)})
        .attr('x',function(d){return d.x})
 
 
@@ -144,12 +144,13 @@ function satForce(e){
         .each(function(d){
         var focus = {};
            focus.x = width*.4;
-           focus.y = d.sat;
+           focus.y = scaleYsat(d.sat);
 
             d.x += (focus.x-d.x)*(e.alpha*.1);
             d.y += (focus.y-d.y)*(e.alpha*.1);
         })
-       .attr('y',function(d){return scaleYsat(d.y)})
+
+       .attr('y',function(d){return scaleY(d.y)})
        .attr('x',function(d){return d.x})
 
 
@@ -166,12 +167,12 @@ function hueForce(e){
         .each(function(d){
         var focus = {};
            focus.x = width*.4;
-           focus.y = d.hue;
+           focus.y = scaleYhue(d.hue);
 
             d.x += (focus.x-d.x)*(e.alpha*.1);
             d.y += (focus.y-d.y)*(e.alpha*.1);
         })
-       .attr('y',function(d){return scaleYhue(d.y)})
+       .attr('y',function(d){return scaleY(d.y)})
        .attr('x',function(d){return d.x})
 
 
