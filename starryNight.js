@@ -1,8 +1,9 @@
 
-var scaleYhue = d3.scale.linear().domain([80,167]).range([height,0])
-var scaleYsat = d3.scale.linear().domain([20,150]).range([height,0])
-var scaleYbright = d3.scale.linear().domain([80,175]).range([height,0])
+var scaleYhue = d3.scale.linear().domain([80,167]).range([0,100])
+var scaleYsat = d3.scale.linear().domain([20,150]).range([0,100])
+var scaleYbright = d3.scale.linear().domain([80,175]).range([0,100])
 
+var scaleY = d3.scale.linear().domain([0,100]).range([height,0])
 
 
 
@@ -43,6 +44,9 @@ var nodesEnter= nodes.enter()
     .attr('width',50)
     .attr("height", 50)
     //.attr('opacity',.4)
+
+
+
         .on( 'mouseover', function() {
 
             d3.selectAll('.node')
@@ -65,8 +69,8 @@ var nodesEnter= nodes.enter()
             d3.select( this )
               .transition()
 
-              .attr("height",  60)
-              .attr("width", 60)
+              .attr("height",  70)
+              .attr("width", 70)
 
           })
           // set back
@@ -126,12 +130,12 @@ function brightForce(e){
         .each(function(d){
         var focus = {};
            focus.x = width*.4;
-           focus.y = d.bright;
+           focus.y = scaleYbright(d.bright);
 
             d.x += (focus.x-d.x)*(e.alpha*.1);
             d.y += (focus.y-d.y)*(e.alpha*.1);
         })
-       .attr('y',function(d){return scaleYbright(d.y)})
+       .attr('y',function(d){return scaleY(d.y)})
        .attr('x',function(d){return d.x})
 
 
@@ -149,12 +153,13 @@ function satForce(e){
         .each(function(d){
         var focus = {};
            focus.x = width*.4;
-           focus.y = d.sat;
+           focus.y = scaleYsat(d.sat);
 
             d.x += (focus.x-d.x)*(e.alpha*.1);
             d.y += (focus.y-d.y)*(e.alpha*.1);
         })
-       .attr('y',function(d){return scaleYsat(d.y)})
+
+       .attr('y',function(d){return scaleY(d.y)})
        .attr('x',function(d){return d.x})
 
 
@@ -171,16 +176,17 @@ function hueForce(e){
         .each(function(d){
         var focus = {};
            focus.x = width*.4;
-           focus.y = d.hue;
+           focus.y = scaleYhue(d.hue);
 
             d.x += (focus.x-d.x)*(e.alpha*.1);
             d.y += (focus.y-d.y)*(e.alpha*.1);
         })
-       .attr('y',function(d){return scaleYhue(d.y)})
+       .attr('y',function(d){return scaleY(d.y)})
        .attr('x',function(d){return d.x})
 
 
 }//END onForceTick Function
+
 
 
 }//end data loaded
